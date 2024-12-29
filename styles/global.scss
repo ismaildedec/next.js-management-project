@@ -1,0 +1,180 @@
+@import './variables';
+:root {
+    --background: #fafafa;
+    --text-primary: #{$text-primary};
+    --text-primary-main: #{$black};
+    --text-secondary: #{$text-secondary};
+    --accent: #3a3847;
+    --accent-hover: #2d2b3a;
+    --border: #{$border-light};
+    --table-color: #2c3e50;
+    --border-color: #{$border-color};
+    --table-hover-color: #dddcdc;
+    --table-even-color: #e9e7e7;
+    --table-th-color: #d3d2d2;
+    --tooltip-icon: #e9e7e7;
+    --submenu-hover: #fafafa;
+    --avatar-icon: #{$black};
+    --config-configText-bg: white;
+    --config-selectBox-bg: #e9e8e8dd;
+    --sidebar-width: 15rem;
+    --sidebar-collapsed-width: 5rem;
+    --main-left: 15%;
+    --integrity-div-dt-container-bg: #fafafa;
+}
+[data-theme='dark'] {
+    --background: #3d3d3d;
+    --text-primary: #{$white};
+    --text-primary-main: #{$white};
+    --text-secondary: #fae1e1;
+    --accent: #3a3847;
+    --accent-hover: #e4e2ec;
+    --border: #978484;
+    --table-color: white;
+    --border-color: #585757;
+    --table-even-color: #4c4b4b;
+    --table-hover-color: #333131;
+    --table-th-color: #8f8f8f;
+    --tooltip-icon: #{$danger-color};
+    --submenu-hover: #{#3d3d3d};
+    --avatar-icon:#{$danger-color};
+    --config-configText-bg: #535353;
+    --config-selectBox-bg: rgba(221, 221, 221, 0.87);
+    --integrity-div-dt-container-bg: #e6e6e6;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-family;
+}
+body {
+    background-color: var(--background);
+    color: var(--text-primary-main);
+    #backup-table_wrapper .dataTables_length select {
+        background-color: var(--background) !important;
+        color: var(--text-primary-main) !important;
+    }
+}
+.main {
+    position: relative;
+    width: $width-main;
+    top: 20px;
+    background-color: var(--background);
+    margin-bottom: 5%;
+    font-family: $font-family;
+    transition: $transition-base;
+}
+.box {
+    &-outline {
+        position: relative;
+        width: $width-box;
+        padding: $spacing-md;
+        margin-bottom: $spacing-md;
+        background-color: var(--background);
+        border-radius: $border-radius;
+        border: 1px solid var(--border-color);
+        box-shadow: $box-shadow;
+    }
+    &-header {
+        font-size: $font-size-lg;
+        border-bottom: 1px solid var(--border-color);
+        padding: $spacing-sm 0;
+    }
+    &-inline {
+        width: $width-lg;
+        padding: $spacing-lg;
+        position: relative;
+        .configrid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: $spacing-xl;
+        }
+    }
+}
+.config-text {
+    padding: $spacing-md;
+    width: $width-lg;
+    resize: none;
+}
+.col {
+    &-left {
+        width: $width-base;
+        float: left;
+    }
+    &-right {
+        margin-left: 50%;
+        input {
+            padding: 5px 10px;
+            font-size: $font-size-sm;
+            border: 1px solid var(--config-selectBox-bg);
+            background-color: var(--config-selectBox-bg);
+        }
+    }
+}
+button {
+    background-color: rgb(253, 87, 87);
+    color: $white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    font-size: $font-size-sm;
+    &:hover {
+        background-color: $button-hover;
+    }
+    &:active {
+        background-color: $button-active;
+    }
+}
+.selectBox {
+    width: $width-sm;
+    padding: 8px;
+    border: 1px solid var(--config-selectBox-bg);
+    border-radius: $border-radius;
+    font-size: $font-size-sm;
+    background-color: var(--config-selectBox-bg);
+    &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: $box-shadow-select;
+    }
+}
+table {
+    width: $width-lg;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    th {
+        background-color: var(--table-th-color);
+        color: var(--table-color);
+        padding: 12px;
+        border: 1px solid $table-border-color;
+        text-align: left;
+        font-weight: bold;
+    }
+    td {
+        padding: 12px;
+        border: 1px solid $table-border-color;
+        color: var(--table-color);
+    }
+    tr:nth-child(even) {
+        background-color: var(--table-even-color);
+    }
+    tr:hover {
+        background-color: var(--table-hover-color);
+    }
+}
+@media screen and (max-width: $mobile-breakpoint) {
+    .main {
+        width: $width-lg;
+        height: 100vh;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 4rem;
+        left: 100%;
+        transition: $transition-base;
+    }
+}
