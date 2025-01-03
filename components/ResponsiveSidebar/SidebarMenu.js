@@ -68,14 +68,18 @@ export default function SidebarMenu({ sidebarOpen, openMenus, setOpenMenus }) {
             return (
                 <li
                     key={item.id}
-                    onClick={handleLogout}
-                    className={styles.logout}
                 >
-                    <i className={item.icon}></i>
-                    <span className={styles.text}>{item.title}</span>
+                    <Link
+                        href={item.href}
+                        className={styles.menu_link}
+                        onClick={handleLogout}
+                    >
+                        <i className={item.icon}></i>
+                        <span className={styles.text}>{item.title}</span>
+                    </Link>
                 </li>
-            );
-        }
+            );
+        }
         // Alt menüsü olan item'lar
         if (item.subItems) {
             return (
