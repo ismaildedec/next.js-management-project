@@ -1,0 +1,372 @@
+@import './variables';
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 260px;
+    background: url("../public/images/sidebar-bg.png");
+    z-index: $z-index-fixed;
+    transition: $transition-base;
+    &.collapsed {
+        width: 5%;
+        .logo_name,
+        .text {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .theme_toggle_btn,
+        .user_section {
+            left: 50%;
+        }
+        .user_profile {
+            padding: 0.5rem;
+            display: flex;
+            justify-content: center;
+            .user_info {
+                display: none;
+            }
+        }
+        &~.main {
+            left: 7% !important;
+        }
+    }
+    // < icon
+    .toggle_btn {
+        position: absolute;
+        top: 20px;
+        right: -17px;
+        height: 30px;
+        width: 30px;
+        background: var(--background);
+        color: $danger-color;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: $box-shadow-sm;
+        transition: $transition-base;
+        border-radius: 1px solid rgb(29, 133, 15);
+        &:hover {
+            background: darken($white, 10%);
+            transform: scale(1.1);
+        }
+        i {
+            font-size: $font-size-base;
+        }
+    }
+    //dark icon
+    .theme_toggle_btn {
+        position: absolute;
+        bottom: 85px;
+        left: 13%;
+        transform: translateX(-50%);
+        width: 35px;
+        height: 35px;
+        background: $white;
+        color: black;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: $box-shadow-sm;
+        transition: $transition-base;
+        &:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+    }
+    .logo_details {
+        height: 60px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 $spacing-lg;
+        i {
+            font-size: 100px;
+            color: $white;
+            min-width: 30px;
+        }
+        .logo_image {
+            width: 40px;
+            height: auto;
+            margin-left: 0;
+            border-radius: 50%;
+            &:hover {
+                border-radius: 40%;
+                cursor: pointer;
+            }
+        }
+        .logo_name {
+            font-size: $font-size-xl;
+            color: $white;
+            margin-left: $spacing-sm;
+            font-weight: 600;
+            transition: $transition-base;
+            text-decoration: none;
+            &:hover {
+                color: $danger-color;
+                cursor: pointer;
+            }
+        }
+        a {
+            text-decoration: none;
+        }
+    }
+    .nav_links {
+        padding-top: 5%;
+        li {
+            .sub_menu {
+                display: none;
+            }
+            padding-top: 5%;
+            position: relative;
+            list-style: none;
+            a,
+            .menu_item {
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                padding: $spacing-md $spacing-xl;
+                //icon
+                i {
+                    min-width: 30px;
+                    font-size: $font-size-xl;
+                    color: $white;
+                }
+                .text {
+                    color: $white;
+                    font-size: $font-size-lg;
+                    font-weight: 400;
+                    white-space: nowrap;
+                    transition: $transition-base;
+                }
+            }
+            // Açılır menüyü kontrol etmek için eklenen kısım
+            &.open {
+                .sub_menu {
+                    display: block;
+                    transition: all 0.3s ease;
+                }
+            }
+            // sidebar kapalı iken dashboard integrity terminal
+            .tooltip {
+                position: absolute;
+                left: 100%;
+                top: 50%;
+                transform: translateY(-50%);
+                background: $white;
+                padding: $spacing-xs $spacing-sm;
+                border-radius: $border-radius;
+                font-size: $font-size-sm;
+                font-weight: 400;
+                white-space: nowrap;
+                opacity: 0;
+                pointer-events: none;
+                transition: $transition-base;
+                color: $black;
+                z-index: $z-index-tooltip;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: -5px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    border-right: 5px solid $white;
+                    border-top: 5px solid transparent;
+                    border-bottom: 5px solid transparent;
+                }
+            }
+            &:hover {
+                .tooltip {
+                    opacity: 1;
+                }
+                i,
+                .text {
+                    color: $danger-color;
+                }
+            }
+        }
+    }
+    //sidebar kapalı iken menu
+    .floating_menu {
+        position: absolute;
+        left: 100%;
+        top: 0;
+        background: $white;
+        width: 180px;
+        box-shadow: $box-shadow;
+        border-radius: $border-radius;
+        padding: $spacing-sm 0;
+        z-index: $z-index-dropdown;
+        .menu_title {
+            padding: $spacing-sm $spacing-md;
+            font-weight: 500;
+            font-size: $font-size-sm;
+            color: $black;
+            font-weight: bold;
+            border-bottom: 1px solid $border-light;
+        }
+        .sub_item {
+            display: block;
+            padding: $spacing-sm $spacing-md;
+            color: $text-primary;
+            text-decoration: none;
+            font-size: $font-size-sm;
+            transition: $transition-base;
+            &:hover {
+                background: $light-color;
+                color: $primary-color;
+            }
+        }
+    }
+    //managament ve rulesets sub menü
+    .sub_menu {
+        padding: $spacing-xs $spacing-xs $spacing-xs $spacing-xl;
+        margin-top: -2px;
+        background: $dark-color;
+        display: none; // Varsayılan olarak gizli
+        transition: all 0.3s ease;
+        li {
+            margin: 4px 0;
+            a {
+                color: $white;
+                font-size: $font-size-base;
+                padding: $spacing-xs $spacing-sm;
+                white-space: nowrap;
+                opacity: 0.6;
+                transition: $transition-base;
+                &:hover {
+                    opacity: 1;
+                    color: $danger-color;
+                    transition: all 0.3s ease;
+                }
+            }
+            &:hover .sub_menu {
+                display: block;
+                transition: all 0.3s ease;
+            }
+        }
+    }
+    // Ok ikonu için stil
+    .arrow {
+        margin-left: auto;
+        transition: transform 0.3s ease;
+    }
+    li.open .sub_menu {
+        display: block;
+    }
+    // Hover efektini kaldır
+    li:hover .sub_menu {
+        display: none;
+    }
+    .mainContent {
+        transition: $transition-base;
+        margin-left: 260px; // Sidebar açıkken ana içeriğin başlangıç noktası }
+        .collapsed+.mainContent {
+            margin-left: 60px; // Sidebar kapalıyken ana içeriğin başlangıç noktası (ayarlanabilir)
+        }
+    }
+    .user_profile {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        cursor: pointer;
+        display: flex; // Flex container
+        align-items: center; // Dikeyde ortalama
+        gap: 8px;
+        transition: transform 0.3s ease;
+        .user_avatar {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            i {
+                color: red;
+                font-size: 1.2rem;
+            }
+        }
+        .user_info {
+            margin-top: 0.5rem;
+            flex: 1;
+            min-width: 0;
+            .user_name {
+                font-weight: 600;
+                color: $white;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: 1.2;
+                white-space: nowrap;
+            }
+            .user_email {
+                font-size: 0.8rem;
+                color: $white;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+        .floating_profile {
+            position: absolute;
+            left: 100%;
+            bottom: 0;
+            background: var(--sidebar-bg);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            min-width: 200px;
+            z-index: $z-index-dropdown;
+            &::before {
+                content: '';
+                position: absolute;
+                left: -6px;
+                bottom: 20px;
+                width: 12px;
+                height: 12px;
+                background: var(--sidebar-bg);
+                transform: rotate(45deg);
+                box-shadow: -2px 2px 3px rgba(0, 0, 0, 0.1);
+            }
+            .user_name {
+                font-weight: 600;
+                margin-bottom: 0.25rem;
+                color: var(--text-color);
+            }
+            .user_email,
+            .user_username {
+                font-size: 0.8rem;
+                color: var(--text-color-light);
+                margin-bottom: 0.25rem;
+            }
+        }
+    }
+}
+.logout {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: $spacing-md $spacing-xl;
+    cursor: pointer;
+    padding-top: 10% !important;
+    //icon
+    i {
+        min-width: 30px;
+        font-size: $font-size-xl;
+        color: $white;
+    }
+    .text {
+        color: $white;
+        font-size: $font-size-lg;
+        font-weight: 400;
+        white-space: nowrap;
+        transition: $transition-base;
+    }
+}
