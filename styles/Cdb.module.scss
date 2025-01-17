@@ -1,0 +1,62 @@
+@import './variables';
+
+.editorContainer {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: $border-radius;
+    overflow: hidden;
+
+    .editor {
+
+            h3 {
+                font-size: $font-size-2xl;
+                color:var(--text-primary);
+                margin-bottom: 15px;
+                font-weight: bold;
+            }
+
+            p {
+                font-size: $spacing-md;
+                color:var(--text-primary);
+                margin-bottom: 20px;
+            }
+
+            h2 {
+                font-size: $spacing-md+0.5;
+                color: var(--text-primary);
+                font-weight: bold;
+                margin-top: 20px;
+                margin-bottom: 10px;
+            }
+
+
+    }
+}
+
+.content_section{
+    textarea{
+        font-size: $font-size-xl;
+        background-color:var(--config-configText-bg) ;
+        color: var(--text-primary);
+    }
+}
+
+
+// Responsive styles
+@media (max-width: 768px) {
+    .form {
+        grid-template-columns: 1fr;
+    }
+
+    .tableContainer {
+        table {
+
+            th,
+            td {
+                padding: 0.5rem;
+                font-size: 0.875rem;
+            }
+        }
+    }
+}
