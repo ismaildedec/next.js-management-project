@@ -1,0 +1,25 @@
+.dotCollision {
+    display: inline-block;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    margin-left: 15px;
+    background-color: var(--background);
+    border-radius: 50%;
+    animation: dotCollision 1s cubic-bezier(.8, 0, .2, 1) infinite;
+  }
+
+  @keyframes dotCollision {
+
+    0%,
+    100% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(0.5);
+    }
+  }
+  #backup-table.dataTables_length select {
+    background-color: blue !important; // Sayıların rengini mavi yapar
+   }
