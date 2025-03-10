@@ -1,4 +1,4 @@
-<h1> SIEM Management Project </h1>
+<h1> SIEM Dashboard Projesi </h1>
 
 <h3> 📌 Proje Hakkında </h3>
 
@@ -33,28 +33,28 @@ Yetkilendirme ve kimlik doğrulama için Keycloak entegrasyonu
 
 <h3> 📂 Kurulum </h3>
 
-⿡ Depoyu Klonla
-bash
+1️⃣ Depoyu Klonla
+```bash
 git clone https://github.com/ihsandedec/siem-nextjs-project.git
 cd siem-nextjs-project
+```
 
-
-⿢ Backend Kurulumu (Django)
-bash
+2️⃣ Backend Kurulumu (Django)
+```bash
 cd backend
 python -m venv venv
 source venv/bin/activate  # Windows için 'venv\Scripts\activate'
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
+```
 
-
-⿣ Frontend Kurulumu (Next.js)
-bash
+3️⃣ Frontend Kurulumu (Next.js)
+```bash
 cd frontend
 npm install
 npm run dev
-
+```
 
  <h3> 🖥 Kullanım </h3>
 
@@ -63,4 +63,4 @@ Django API: http://127.0.0.1:8000
 Next.js Frontend: http://localhost:3000
 
 
-<h3> 📸 Ekran Görüntüleri </h3>
+<h3> 📸 Ekran Görüntüleri </h3>
