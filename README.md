@@ -64,3 +64,17 @@ Next.js Frontend: http://localhost:3000
 
 
 <h3> 📸 Ekran Görüntüleri </h3>
+
+![Giriş Ekranı](screenshots/dashboard-page.jpg)
+
+![Add Server Ekranı](screenshots/addserver-page.jpg)
+
+![Add Server Ekranı](screenshots/addserver2-page.jpg)
+
+![Backup Integrity Ekranı](screenshots/backup-page.jpg)
+
+![CDB List Ekranı](screenshots/cdbList-page.jpg)
+
+![Terminal Ekranı](screenshots/terminal2-page.jpg)
+
+![Terminal Ekranı](screenshots/terminal-page.jpg)
